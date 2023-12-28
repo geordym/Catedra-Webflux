@@ -11,4 +11,8 @@ public interface ICursoService {
 
     List<CursoDTO> listarCursos();
     CursoDTO crearCurso(CursoDTO cursoDTO);
+
+    void eliminarCurso(Long idCurso);
+
+    CursoDTO obtenerCursoPorId(Long idCurso);
 }

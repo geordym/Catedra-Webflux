@@ -16,10 +16,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.util.AssertionErrors.assertNull;
+
 @SpringBootTest
 public class GlobalTesting {
 
@@ -53,5 +55,23 @@ public class GlobalTesting {
         assertEquals(1, cursos.size());
         assertEquals("Curso 1", cursos.get(0).getNombre());
     }
+
+
+    @Test
+    public void testEliminarCurso() {
+        CursoDTO cursoDTO = new CursoDTO();
+        cursoDTO.setNombre("Curso a Eliminar");
+        cursoDTO.setDescripcion("Descripción del Curso a Eliminar");
+
+        CursoDTO nuevoCurso = cursoService.crearCurso(cursoDTO);
+        Long idCursoAEliminar = nuevoCurso.getId();
+        cursoService.eliminarCurso(idCursoAEliminar);
+
+        // Assert
+        assertThrows(
+                NoSuchElementException.class,
+                () -> cursoService.obtenerCursoPorId(idCursoAEliminar)
+        );    }
+
 
 }
