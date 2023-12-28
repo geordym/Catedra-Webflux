@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "25ce51ca-30b8-4859-96e5-28d355e7eaad",
+		"name": "Catedra Prueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28077684"
+	},
+	"item": [
+		{
+			"name": "Listando Cursos",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "Success, Listando Cursos exitosamente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"nombre\": \"asd\",\n        \"descripcion\": \"asd\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Creando Curso",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\" : \"test\",\r\n    \"descripcion\" : \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080"
+			},
+			"response": [
+				{
+					"name": "Bad Request, mal formato en el body",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"\",\r\n    \"descripcion\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080"
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "101"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    \"La descripcion debe tener entre 1 y 100 caracteres\",\n    \"El nombre debe tener entre 1 y 35 caracteres\"\n]"
+				},
+				{
+					"name": "Success, creado exitosamente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"test\",\r\n    \"descripcion\" : \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"nombre\": \"test\",\n    \"descripcion\": \"test\"\n}"
+				}
+			]
+		}
+	]
+}
