@@ -6,7 +6,6 @@ import com.catedra.prueba.Repository.CursoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +33,11 @@ public class CursoServiceImpl implements ICursoService {
         return cursosDTO;
     }
 
-    public Mono<CursoDTO> crearCurso(CursoDTO cursoDTO) {
+    @Override
+    public CursoDTO crearCurso(CursoDTO cursoDTO) {
         Curso curso = modelMapper.map(cursoDTO, Curso.class);
-        return cursoRepository.save(curso)
-                .map(savedCurso -> modelMapper.map(savedCurso, CursoDTO.class));
+        Curso cursoCreado = cursoRepository.save(curso);
+        return modelMapper.map(cursoCreado, CursoDTO.class);
     }
 
 

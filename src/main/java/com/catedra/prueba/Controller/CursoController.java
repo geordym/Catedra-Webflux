@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/")
 
@@ -18,9 +20,8 @@ public class CursoController {
     private CursoServiceImpl cursoService;
 
     @GetMapping
-    public ResponseEntity<String> obtenerCursos() {
-        String mensaje = "Obteniendo la lista de cursos...";
-        return ResponseEntity.ok(mensaje);
+    public ResponseEntity<List<CursoDTO>> obtenerCursos() {
+        return ResponseEntity.ok(cursoService.listarCursos());
     }
 
     @PostMapping
