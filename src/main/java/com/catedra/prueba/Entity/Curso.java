@@ -25,6 +25,12 @@ public class Curso {
         this.descripcion = descripcion;
     }
 
+    public Curso(Long id, String nombre, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
     // Getters y setters
     public Long getId() {
         return id;

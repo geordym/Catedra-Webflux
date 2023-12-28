@@ -3,6 +3,7 @@ package com.catedra.prueba.Controller;
 
 import com.catedra.prueba.DTO.CursoDTO;
 import com.catedra.prueba.Service.CursoServiceImpl;
+import com.catedra.prueba.Service.ICursoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import java.util.List;
 public class CursoController {
 
     @Autowired
-    private CursoServiceImpl cursoService;
+    private ICursoService cursoService;
 
     @GetMapping
     public ResponseEntity<List<CursoDTO>> obtenerCursos() {
