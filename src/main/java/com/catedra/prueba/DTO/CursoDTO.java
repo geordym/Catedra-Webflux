@@ -24,6 +24,12 @@ public class CursoDTO {
         this.descripcion = descripcion;
     }
 
+
+    public CursoDTO(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
     public Long getId() {
         return id;
     }
